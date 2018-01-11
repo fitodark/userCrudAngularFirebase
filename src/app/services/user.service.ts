@@ -21,7 +21,6 @@ export class UserService {
 
   constructor(public afs: AngularFirestore) {
     this.usersCollection = this.afs.collection('users');
-    // this.tasks = this.afs.collection('tasks').valueChanges();
     this.users = this.usersCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as User;
