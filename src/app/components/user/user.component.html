@@ -1,0 +1,35 @@
+<div *ngIf="users?.length > 0; else noUsers">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Edad</th>
+        <th><span class="glyphicon glyphicon-wrench"></span></th>
+      </tr>
+    </thead>
+    <tr *ngFor="let user of users">
+      <td>
+        {{user.name}}
+      </td>
+      <td>
+        {{user.email}}
+      </td>
+      <td>
+        {{user.age}}
+      </td>
+      <td>
+        <a href="#" class="secondary-content">
+          <i (click)="deleteUser($event, user)" class="glyphicon glyphicon-trash"></i>
+          <i (click)="editUser($event, user)" class="glyphicon glyphicon-edit"></i>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #noUsers>
+  <p>
+    No hay Usuarios aun
+  </p>
+</ng-template>

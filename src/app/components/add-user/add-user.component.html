@@ -1,0 +1,74 @@
+<div class="card">
+  <div class="card-content" *ngIf="!getEditState()">
+    <p>Agregar nuevo usuario</p>
+    <form (ngSubmit)="onSubmit()" class="col s6">
+      <div class="row">
+          <label for="name">Nombre:</label>
+          <input 
+            type="text" 
+            name="name"
+            class="form-control"  
+            id="name"
+            required
+            [(ngModel)]="user.name"/>
+          
+          <label for="email">Email:</label>
+          <input 
+            type="text" 
+            name="email"
+            class="form-control"
+            id="email"
+            required
+            [(ngModel)]="user.email"/>
+
+          <label for="age">Edad:</label>
+          <input 
+            type="text" 
+            name="age"
+            class="form-control"
+            id="age"
+            required
+            [(ngModel)]="user.age"/>
+      </div>
+      <button class="btn btn-primary" type="submit">
+        Guardar
+      </button>
+    </form>
+  </div>
+  <div class="card-content" *ngIf="getEditState()">
+    <p>editar usuario seleccionado</p>
+    <form (ngSubmit)="updateUser()" class="col s6">
+      <div class="row">
+          <label for="name">Nombre:</label>
+          <input 
+            type="text" 
+            name="name"
+            class="form-control"  
+            id="name"
+            required
+            [(ngModel)]="userService.userToEdit.name"/>
+          
+          <label for="email">Email:</label>
+          <input 
+            type="text" 
+            name="email"
+            class="form-control"
+            id="email"
+            required
+            [(ngModel)]="userService.userToEdit.email"/>
+
+          <label for="age">Edad:</label>
+          <input 
+            type="text" 
+            name="age"
+            class="form-control"
+            id="age"
+            required
+            [(ngModel)]="userService.userToEdit.age"/>
+      </div>
+      <button class="btn btn-primary" type="submit">
+        Modificar
+      </button>
+    </form>
+  </div>
+</div>
